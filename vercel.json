@@ -1,7 +1,7 @@
 {
-    "build": [
+    "builds": [
         {
-            "src": "protocole_app/wsgi.py",
+            "src": "protocole_appwsgi.py",
             "use": "@vercel/python",
             "config": {
                 "maxLambdaSize": "15mb",
