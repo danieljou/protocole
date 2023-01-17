@@ -66,22 +66,22 @@ WSGI_APPLICATION = 'protocole_app.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     # 'NAME': BASE_DIR / 'db.sqlite3',
-    #     'HOST': 'postgresql-106015-0.cloudclusters.net',
-
-    # }
-
-
-     'default': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'PROTOCOLE',
-        'USER':'root',
-        'PASSWORD':'#Profiler#',
-        'HOST':'68.64.164.106',
-        'PORT':'10214'
+        'NAME': BASE_DIR / 'db.sqlite3',
+        'HOST': 'postgresql-106015-0.cloudclusters.net',
+
     }
+
+
+    #  'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME':'PROTOCOLE',
+    #     'USER':'root',
+    #     'PASSWORD':'#Profiler#',
+    #     'HOST':'68.64.164.106',
+    #     'PORT':'10214'
+    # }
 }
 
 
