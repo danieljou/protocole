@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    {% include 'navbar.html' %}
+
+    <div class="row my-3">
+        
+
+        
+    </div>
+    <div class="row">
+        <div class="card">
+            <div class="card-header">
+                
+                    Noter l'etudiant {{etudiant}} 
+            </div>
+            <div class="card-body">
+                <form action="" method="post" novalidate>
+                    {% csrf_token %}
+                    <div class="row">
+                        {% for item in form  %}
+                            {% if item.label == 'Remarque' %}
+
+                                <div class="col-md-12 my-2">
+                                    {{item |as_crispy_field}}
+                                </div>
+                            {% else %}
+                           
+                                <div class="col-md-2">   
+                                    {{item |as_crispy_field}}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+            
+                    <input type="submit" class="btn btn-success my-3" value="Noter">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+    {% include "navbar.html" %}
+    <div class="row">
+       
+        <h2><br>Etudiants</h2>
+        <div class="d-flex justify-content-end">
+
+            {% if request.user.is_superuser %}
+            <a href="{% url 'add_etudiants' %}" class="btn btn-primary"> <i class="fa fa-plus-circle"></i> Ajouter</a>
+            {% endif %}
+            <br>
+        </div>
+        <table class="table table-bordered table-striped table-responsive" >
+            <thead class="table-primary">
+                <tr>
+                    <th>N°</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Classe</th>
+                    <th>Sexe</th>
+                    <th>Traitement</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for student in etudiants %}
+                <tr>
+                    <td>{{student.id}}</td>
+                    <td>{{student.Nom}}</td>
+                    <td>{{student.prenom}}</td>
+                    <td>{{student.salle_de_classe}}</td>
+                    <td>{{student.sexe}}</td>
+                    <td> 
+                        
+                        {% if request.user.is_superuser %}
+                            <a href="{% url 'update_etudiant' student.id  %}" class="btn btn-warning" ><i class="fa fa-pen"></i> </a> 
+                            <a href="{% url 'delete_etudiant' student.id  %}" class="btn btn-danger" ><i class="fa fa-trash"></i> </a> 
+                        {% endif %}
+                            
+                        <a href="{% url 'noter_etudiant' student.id  %}" class="btn btn-success" ><i class="fa fa-book"></i>  noter </a> 
+                        <a href="{% url 'notes_etudiant' student.id  %}" class="btn btn-primary" ><i class="fa fa-eye"></i>  voir les notes </a> 
+                    </td>
+                </tr>
+                {% empty %}
+                <tr colspan="5">
+                    <div class="text-center">Aucun etudiant enregistré</div>
+                </tr>
+                {% endfor %}
+                    
+                
+
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}
+    

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    {% include 'navbar.html' %}
+    <div class="my-5"></div>
+    
+    <!-- {% for forms in form_criteres %}
+
+    {{forms.Critere}}
+    {{forms.Etudiant}}
+    {{forms.form |crispy }}
+        <br>
+    {% endfor %}
+     -->
+   <form action="" method="post" novalidate>
+    {% csrf_token %}
+             
+    <table class="table table-responsive ">
+        <thead>
+            <tr>
+                <th>ETUDIANTS</th>
+                {% for item in criteres %}
+                    <th>{{item}}</th>
+                {% endfor %}   
+            </tr>
+        </thead>
+        <tbody>
+           
+           {% for item in  group_student %}
+            
+               <tr>
+                    <td>
+                        {{item.student}}
+                    </td>
+                    
+                    {% for element in item.form %}
+                        <td>{{element |crispy}}</td>
+                    {% endfor %}
+                        
+               </tr>
+           {% endfor %}
+            
+        </tbody>
+    </table>
+<input type="submit" value="Valider" class="btn btn-success">
+   </form>
+        
+{% endblock content %}
+    

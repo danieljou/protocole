@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <style>
+        .login{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+        }
+    </style>
+    <div class="login">
+        <div class="col-md-8 col-sm-11">
+            
+           <div class="card">
+                <div class="card-header">
+                    Formulaire de connexion
+                </div>
+                <div class="card-body">
+                    <form action="" method="post" novalidate>
+                        {% csrf_token %}
+                        {{form |crispy}}
+                        <input type="submit" name="" id="" value="Se connecter" class="btn btn-primary my-2 col-12">
+                    </form>
+                </div>
+           </div>
+        </div>
+    </div>
+{% endblock content %}
+    

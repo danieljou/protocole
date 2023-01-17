@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    {% include 'navbar.html' %}
+    <div class="row">
+        <div class="d-flex justify-content-center my-5">
+            <div class="col-md-6">
+                <div class=" card card-body">
+                    <form action="" method="post" novalidate>
+                        {% csrf_token %}
+                        {{form | crispy}}
+                        <br>
+                        <input type="submit" value="enregister" class="max-width btn btn-primary ">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    

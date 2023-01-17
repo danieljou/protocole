@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    {% include 'navbar.html' %}
+
+    <div class="row my-3">
+        <div class="col-12">
+            <button class="btn btn-outline-primary col-12 h2" disabled="desable"> notes de l'etudiant {{etudiant}} </button>
+        </div>
+       <div class="col-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Jury</th>
+                    <th>Tenu conforme</th>
+                    <th>Démarche et posture</th>
+                    <th>Eloquence</th>
+                    <th>Honeteté</th>
+                    <th>Cas pratique</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for item in etudiant.get_notes %}
+                    <tr>
+                        <td>
+                             {{item.utilisateur}}
+                        </td>
+                        <td> {{item.tenue_conforme}} </td>
+                        <td> {{item.demarche_posture}} </td>
+                        <td> {{item.eloquence}} </td>
+                        <td> {{item.Honnetete}} </td>
+                        <td> {{item.cas_pratique}} </td>
+                        <td> {{item.get_total}} </td>
+                    </tr>
+                {% endfor %}
+                <tr >
+                    <td colspan="7" class="bg-primary text-light"> <div class="d-flex justify-content-end">{{etudiant.get_tautaux}}</div></td>
+                </tr>
+                
+            </tbody>
+        </table>
+        
+           
+       </div>
+    </div>
+{% endblock content %}
+    
